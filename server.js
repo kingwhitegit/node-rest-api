@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./app/route/user.route.js');
-//const db = require('./app/config/db.config.js');
+const routes = require('./route/user.route.js');
+const db = require('./models');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -16,4 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(routes);
 
 // Create a Server
-app.listen(port);
+app.listen(port,()=>{
+    db.sequelize.sync();
+});
