@@ -11,7 +11,7 @@ module.exports = {
       lastname: 'smith2',
       ps: 'password',      
     });
-  },fdsafdsa
+  },
 
   down: (queryInterface, Sequelize) => {
     /*
