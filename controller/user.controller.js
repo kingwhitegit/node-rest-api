@@ -1,7 +1,7 @@
 const db = require('../models');
 const upload = require('./upload');
 const user = db.users;
-const dataupload = db.uploadData;
+const uploadData = db.uploadData;
 // Post a user
 exports.create = (req, res) => {
 	const { firstname, lastname, ps } = req.body;
@@ -17,7 +17,7 @@ exports.create = (req, res) => {
 	});
 };
 
-// FETCH all users
+// fetch all users
 exports.findAll = (req, res) => {
 	user.findAll().then(users => {
 	  // Send all users to Client
@@ -60,13 +60,12 @@ exports.delete = (req, res) => {
 
 exports.upload = (req, res) => {
 	// Save to MySQL database
-	const filepath = `${req.protocol}://${req.domain}/${req.file.filename}`;
-	dataupload.create({
+	const filePath = `${req.protocol}://${req.domain}/${req.file.filename}`;
+	uploadData.create({
 	  name: req.body.name,
-	  url: filepath,
+	  url: filePath,
 	}).then(user => {
 		// Send created user to client
 		res.send(user);
-		console.log(filepath);
 	});
 }

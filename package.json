@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "start": "webpack --mode development && npm run server",
-    "babel": "babel src -d public",
     "build": "webpack --mode production",
     "server": "nodemon server.js"
   },
